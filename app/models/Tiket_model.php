@@ -86,25 +86,25 @@ class Tiket_model
 
     public function tiketUserBeli($user_id) {
         $query = "
-            SELECT f.judul AS judul_film,
-                   t.order_id,
+            SELECT f.film_id, 
+                   f.judul AS judul_film, 
+                   t.order_id, 
                    COUNT(*) AS jumlah_tiket
             FROM tiket t
             JOIN jadwal j ON t.jadwal_id = j.jadwal_id
             JOIN film f ON j.film_id = f.film_id
             WHERE t.user_id = :user_id
-            GROUP BY f.judul, t.order_id;
+            GROUP BY f.film_id, f.judul, t.order_id;
         ";
         
         $this->db->query($query);
-        $this->db->bind(':user_id', $user_id); 
-        $result = $this->db->resultSet(); // Mengambil hasil query
-        
-        // Mengembalikan hasil query beserta jumlah baris
+        $this->db->bind(':user_id', $user_id);
+    
+        $result = $this->db->resultSet();
+    
         return [
             'data' => $result,
-            'row_count' => $this->db->rowCount() // Mengambil jumlah baris
+            'row_count' => $this->db->rowCount()
         ];
-    }
-    
+    }    
 }

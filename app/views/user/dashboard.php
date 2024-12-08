@@ -72,7 +72,7 @@ if (isset($_SESSION['user_id'])) {
                         <p class="order_id"><?= htmlspecialchars($tiket['order_id']) ?></p>
                         <p class="jumlah"><?= htmlspecialchars($tiket['jumlah_tiket']) ?> Tiket</p>
                         <p class="status">Transaksi Sukses</p>
-                        <button type="button">Beri Ulasan</button>
+                        <a href="<?= BASE_URL ?>film/detail/<?= $tiket['film_id']; ?>"><button type="button">Beri Ulasan</button></a>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>

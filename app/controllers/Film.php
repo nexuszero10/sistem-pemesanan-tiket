@@ -4,7 +4,7 @@ class Film extends Controller {
     public function index (){
         $data['file'] = 'film/film_3';
         $data['title'] = 'Katalog - Bioskop Athena';
-        $data['semuaFilm'] = $this->model('Film_model')->getAllFilm();
+        $data['semuaFilm'] = $this->model('Film_model')->getAllFilmManual();
         $this->view('film/index', $data);
     }
 

@@ -58,4 +58,11 @@ class Film_model{
 
         return $semuaFilm;
     }
+
+    public function getAllFilmManual(){
+        $query = "SELECT film_id, judul, url_trailer, image FROM $this->table";
+        $this->db->query($query);
+        $this->db->execute();
+        return $this->db->resultSet();
+    }
 }

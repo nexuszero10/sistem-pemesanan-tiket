@@ -54,18 +54,20 @@ if (!isset($_SESSION['user_logged_in']) && isset($_COOKIE['id']) && isset($_COOK
         </header>
 
         <div id="movieList">
-            <?php foreach ($data['semuaFilm'] as $barisKey => $barisFilm): ?>
+            <?php
+            $films = $data['semuaFilm']; 
+            $chunkedFilms = array_chunk($films, 4); 
+            foreach ($chunkedFilms as $filmGroup): ?>
                 <div class="sub-List">
-                    <?php foreach ($barisFilm as $filmKey => $film): ?>
+                    <?php foreach ($filmGroup as $film): ?>
                         <div class="movieContent">
-                            <img src="<?= BASE_URL ?>img/film/<?= $film['image'] ?>" alt="<?= $film['image'] ?>">
+                            <img src="<?= BASE_URL ?>img/film/<?= $film['image'] ?>" alt="<?= $film['judul']; ?>">
                             <h2><?= $film['judul']; ?></h2>
                             <div class="movieButton">
                                 <button onclick="openTrailer('<?= $film['url_trailer']; ?>')">Trailer</button>
                                 <a href="<?= BASE_URL ?>film/detail/<?= $film['film_id']; ?>"><button>Detail</button></a>
                             </div>
                         </div>
-
                     <?php endforeach; ?>
                 </div>
             <?php endforeach; ?>

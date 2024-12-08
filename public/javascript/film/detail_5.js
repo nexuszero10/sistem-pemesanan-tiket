@@ -52,6 +52,9 @@ button_post_review.addEventListener("click", async function generateReview(event
             text: 'Silahkan Register / Login untuk bisa membeli tiket.',
             icon: 'warning',
             confirmButtonText: 'OK',
+            willClose: () => {
+                window.location.href = "http://localhost/project-ads-athena/public/user/login/"; 
+            }
         });
         return;
     }
