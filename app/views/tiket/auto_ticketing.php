@@ -120,7 +120,6 @@ if (!isset($_SESSION['user_logged_in']) && isset($_COOKIE['id']) && isset($_COOK
                     </div>
                 </form>
 
-
                 <div class="bookingSeat">
                     <div class="listSeat">
                         <?php $rowSeats = ['A', 'B', 'C', 'D']; ?>
@@ -171,14 +170,11 @@ if (!isset($_SESSION['user_logged_in']) && isset($_COOKIE['id']) && isset($_COOK
 
         <footer>
             <div class="optionalPage">
-                <a href="">News</a>
-                <a href="">Contact</a>
-                <a href="">About Us</a>
             </div>
             <div class="copyright">© 2024 Biokop Athena. All rights reserved.</div>
         </footer>
     </div>
-    <script src="<?= BASE_URL ?>javascript/tiket/auto_ticketing.js"></script>
+    <script src="<?= BASE_URL ?>javascript/tiket/auto_ticketing_2.js"></script>
 </body>
 
 </html>
