@@ -107,4 +107,30 @@ class Tiket_model
             'row_count' => $this->db->rowCount()
         ];
     }    
+
+    public function getTiketByFilm($film_id){
+        $query = "SELECT 
+                    u.username,
+                    t.order_id,
+                    COUNT(t.tiket_id) AS jumlah_tiket,
+                    GROUP_CONCAT(CONCAT(t.baris_kursi, t.nomor_kursi) ORDER BY t.baris_kursi, t.nomor_kursi) AS kursi_dipilih,
+                    j.tanggal
+                    FROM tiket t
+                    JOIN jadwal j ON t.jadwal_id = j.jadwal_id
+                    JOIN user u ON t.user_id = u.user_id
+                    WHERE j.film_id = :film_id
+                    GROUP BY u.username, t.order_id, j.tanggal
+                    ORDER BY u.username, t.order_id;
+                ";
+        
+        $this->db->query($query);
+        $this->db->bind(':film_id', $film_id);
+        $this->db->execute();
+
+        if($this->db->rowCount() > 0){
+            return $this->db->resultSet();
+        } else {
+            return null;
+        }
+    }
 }

@@ -34,4 +34,16 @@ class Tiket extends Controller
             $this->view('tiket/manual_ticketing', $data);
         }
     }
+
+    public function listTiket(){
+        $data['title'] = "List Tiket - Bisokop Athena";
+        $data['semuaFilm'] = $this->model('Film_model')->getAllFilmManual();
+        $this->view('admin/list_tiket', $data);
+    }
+
+    public function detailTiket($idFilm){
+        $data['title'] = "Detail Tiket - Bioskop Athena";
+        $data['dataDetailTiket'] = $this->model('Tiket_model')->getTiketByFilm($idFilm);
+        $this->view('admin/detail_tiket', $data);
+    }
 }

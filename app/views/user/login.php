@@ -42,8 +42,8 @@
         <div id="loginContainer">
             <h1>Login</h1>
             <form action="<?= BASE_URL ?>user/loginAkun/" method="post" id="loginForm">
-                <input type="text" name="username" id="username" placeholder="Username">
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="text" name="username" id="username" placeholder="Username" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
                 <button type="submit" name="submitLogin">Login</button>
                 <div class="optionLogin">
                     <div class="cookieCheckbox">

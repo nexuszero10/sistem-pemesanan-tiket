@@ -187,7 +187,7 @@ footer {
     font-size: 14px;
     border-top: 1.5px solid #333;
     margin-top: 45px;
-    margin-top: auto; /* Biarkan footer menempel jika konten pendek */
+    margin-top: auto;
 }
 
 footer .optionalPage {
