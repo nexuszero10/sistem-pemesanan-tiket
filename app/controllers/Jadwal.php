@@ -96,6 +96,17 @@ class Jadwal extends Controller
         $affectedRow = $this->model('jadwal_model')->hapusDataJadwal($idJadwal);
         if($affectedRow > 0){
             $data['success-hapus-jadwal'] = "Anda berhasil menghapus jadwal";
+            $data['title'] = "Kelola - Bioskop Athena";
+            $data['semuaFilm'] = $this->model('Film_model')->getAllFilmManual();
+            return $this->view('admin/kelola', $data);
+        }
+    }
+
+    public function resetDataJadwal($idJadwal){
+        $affectedRow = $this->model('Jadwal_model')->resetJadwal($idJadwal);
+        if($affectedRow > 0){
+            $data['success-reset-jadwal'] = "Anda berhasil mereset jadwal";
+            $data['title'] = "Kelola - Bioskop Athena";
             $data['semuaFilm'] = $this->model('Film_model')->getAllFilmManual();
             return $this->view('admin/kelola', $data);
         }

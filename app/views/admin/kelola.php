@@ -296,6 +296,18 @@ if (!isset($_SESSION['admin_logged_in'])) {
         </script>
         <?php unset($data['success-hapus-jadwal']) ?>
     <?php endif; ?>
+
+    <?php if (isset($data['success-reset-jadwal'])): ?>
+        <script>
+            Swal.fire({
+                title: 'Reset Data Jadwal Berhasil!',
+                text: '<?= htmlspecialchars($data['success-reset-jadwal']) ?>',
+                icon: 'success',
+                confirmButtonText: 'OK',
+            });
+        </script>
+        <?php unset($data['success-reset-jadwal']) ?>
+    <?php endif; ?>
 </body>
 
 </html>

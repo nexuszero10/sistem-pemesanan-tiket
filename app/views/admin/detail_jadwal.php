@@ -306,6 +306,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
                             <a href="<?= BASE_URL ?>jadwal/tambahJadwal/<?= $jadwal['film_id'] ?>"><button id="tambahJadwal">Tambah Jadwal</button></a>
                             <a href="<?= BASE_URL ?>jadwal/updateJadwal/<?= $jadwal['jadwal_id'] ?>"><button class="editJadwal">Edit Jadwal</button></a>
                             <a href="<?= BASE_URL ?>jadwal/hapusDataJadwal/<?= $jadwal['jadwal_id'] ?>"><button class="hapusJadwal">Hapus Jadwal</button></a>
+                            <a href="<?= BASE_URL ?>jadwal/resetJadwal/<?= $jadwal['jadwal_id'] ?>"><button class="resetJadwal">Reset Jadwal</button></a>
                         </div>
                     </div>
                 </div>
@@ -334,6 +335,25 @@ if (!isset($_SESSION['admin_logged_in'])) {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         window.location.href = '<?= BASE_URL ?>jadwal/hapusDataJadwal/<?= $jadwal['jadwal_id'] ?>';
+                    }
+                });
+            });
+        });
+
+        document.querySelectorAll('.resetJadwal').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: 'Data jadwal akan direset!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, Reset!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '<?= BASE_URL ?>jadwal/resetDataJadwal/<?= $jadwal['jadwal_id'] ?>';
                     }
                 });
             });

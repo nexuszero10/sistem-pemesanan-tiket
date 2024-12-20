@@ -144,4 +144,14 @@ class Jadwal_model
         return $this->db->resultSet();
     }
     
+    public function resetJadwal($jadwal_id){
+        $query = "UPDATE jadwal
+                    SET status = 'selesai'
+                    WHERE jadwal_id = :jadwal_id;
+                ";
+        $this->db->query($query);
+        $this->db->bind(':jadwal_id', $jadwal_id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }
